@@ -1,0 +1,31 @@
+{% extends "encyclopedia/layout.html" %}
+{% load widget_tweaks %}
+
+{% block title %}
+    New Entry
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h1>Create new wiki page</h1>
+        </div>
+        <form action="" method="POST" class="form-group">
+            {% csrf_token %}
+            <div class="row">
+                <label for="{{ form.title.label }}">{{ form.title.label }}</label>
+                {% render_field form.title class+="form-control mytitle" autocomplete="off" %}
+            </div>
+            
+            <div class="row">
+                <label for="{{ form.content.label }}">{{ form.content.label }}</label>
+                {% render_field form.content rows="2" cols="50" class+="form-control textareaOutput" autocomplete="off" %}
+            </div>
+            <br>
+            <div class="row">
+                <input type="submit" class="btn btn-info">
+            </div>
+        </form>
+    </div>
+    
+{% endblock %}
